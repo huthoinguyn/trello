@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 1.3em;
+  font-family: "Source Sans Pro", sans-serif;
+}
+$column-header-height: 36px;
+$column-footer-height: 36px;
+$column-border-radius: 5px;
+$card-border-radius: 4px;
+$gap: 10px;
+
+$board-bg-color: #2cccff;
+$appbar-bg-color: #0079bf;
+$list-bg-color: #ebecf0;
+$common-element-bg: rgba(255, 255, 255, 0.24);
+.App {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 40px 50px 1fr;
+  background-color: $board-bg-color;
+  .navbar {
+    padding: $gap;
+    display: flex;
+    align-items: center;
+    &.app {
+      background-color: $appbar-bg-color;
+      font-size: 1.5rem;
+    }
+    &.board {
+      background-color: $board-bg-color;
+      font-size: 1.1rem;
+    }
+  }
+  .board-columns {
+    display: flex;
+    overflow-x: auto;
+    margin: 0 $gap $gap;
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar:horizontal {
+      height: 13px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $common-element-bg;
+      border-radius: 8px;
+    }
+
+    .column {
+      flex: 0 0 auto;
+      width: 300px;
+      height: calc(100% - $gap);
+      &:not(:first-child) {
+        margin-left: $gap;
+      }
+      > * {
+        background-color: $list-bg-color;
+        color: #333;
+        padding: 0 8px;
+      }
+      header {
+        padding-left: 15px;
+        line-height: $column-header-height;
+        height: $column-header-height;
+        font-size: 16px;
+        font-weight: bold;
+        border-top-left-radius: $column-border-radius;
+        border-top-right-radius: $column-border-radius;
+      }
+      footer {
+        padding-left: $gap;
+        line-height: $column-footer-height;
+        height: $column-footer-height;
+        border-bottom-left-radius: $column-border-radius;
+        border-bottom-right-radius: $column-border-radius;
+      }
+      ul {
+        list-style-type: none;
+        margin: 0;
+        max-height: calc(
+          100% - #{$column-header-height} - #{$column-footer-height}
+        );
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+          -webkit-appearance: none;
+        }
+        &::-webkit-scrollbar:vertical {
+          width: 9px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: darken($list-bg-color, 15);
+          border-right: 5px solid $list-bg-color;
+        }
+
+        li {
+          background-color: #fff;
+          padding: $gap;
+          border-radius: $card-border-radius;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          &:not(:last-child) {
+            margin-bottom: $gap;
+          }
+          img {
+            display: block;
+            width: calc(100% + 2 * #{$gap});
+            margin: -$gap 0 $gap (-$gap);
+            border-top-left-radius: $card-border-radius;
+            border-top-right-radius: $card-border-radius;
+          }
+        }
+      }
+    }
+  }
+}

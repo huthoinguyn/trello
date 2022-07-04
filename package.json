@@ -8,8 +8,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "node-sass": "^7.0.1",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "sass": "^1.53.0",
+    "sass-loader": "^13.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
