@@ -2,7 +2,9 @@
 
 .board-content {
   height: $board-content-height;
+  display: flex;
   overflow-x: auto;
+  overflow-y: hidden;
   &::-webkit-scrollbar {
     -webkit-appearance: none;
   }
@@ -17,5 +19,20 @@
     background-color: rgba(150, 150, 200, 0.1);
     border: 1px dashed #abc;
     margin: 5px 45px 5px 5px;
+  }
+  .add-new-column {
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 15px;
+    cursor: pointer;
+    color: #fff;
+    margin-left: $gap;
+    font-size: 15px;
+    background-color: hsla(0, 0%, 100%, 0.24);
+    border-radius: $column-border-radius;
+    &:hover{
+      background-color: hsla(0, 0%, 100%, 0.34);
+    }
   }
 }

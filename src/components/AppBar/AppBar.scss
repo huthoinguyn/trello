@@ -1,6 +1,6 @@
 @import "../../_setting.scss";
 
-$appbar-bg-color: #0079bf;
+$appbar-bg-color: #735185;
 
 .navbar-app {
   height: $navbar-app-height;
@@ -9,4 +9,6 @@ $appbar-bg-color: #0079bf;
   padding: $gap;
   display: flex;
   align-items: center;
+  color: #fff;
+  font-weight: bold;
 }

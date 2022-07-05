@@ -2,6 +2,11 @@
 
 .App {
   height: 100vh;
-  background-color: $board-bg-color;
   overflow: hidden;
+  background-color: $board-bg-color;
+  color: $text-color;
+  .icon {
+    font-size: 14px;
+    margin-right: 6px;
+  }
 }
