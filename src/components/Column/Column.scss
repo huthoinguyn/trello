@@ -2,7 +2,6 @@
 
 $column-header-height: 36px;
 $column-footer-height: 36px;
-$column-border-radius: 5px;
 $column-height: calc(#{$board-content-height} - #{$gap * 2});
 $list-bg-color: #ebecf0;
 
@@ -13,7 +12,6 @@ $list-bg-color: #ebecf0;
   margin-left: $gap;
   > * {
     background-color: $list-bg-color;
-    color: #333;
     padding: 0 8px;
   }
   header {
@@ -32,6 +30,14 @@ $list-bg-color: #ebecf0;
     height: $column-footer-height;
     border-bottom-left-radius: $column-border-radius;
     border-bottom-right-radius: $column-border-radius;
+    color: #888;
+    .footer-action {
+      margin-left: $gap;
+      cursor: pointer;
+      &:hover {
+        color: $text-color;
+      }
+    }
   }
   .card-list {
     margin: 0;
@@ -52,6 +58,7 @@ $list-bg-color: #ebecf0;
     .card-ghost {
       transition: transform 0.18s ease;
       transform: rotateZ(5deg);
+      font-weight: bold;
     }
 
     .card-ghost-drop {

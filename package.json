@@ -9,6 +9,7 @@
     "eslint": "eslint src"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "lodash": "^4.17.21",
     "node-sass": "^7.0.1",
     "react": "^18.0.0",
