@@ -14,7 +14,7 @@ $column-height: calc(#{$board-content-height} - #{$gap * 2});
     padding: 0 8px;
   }
   header {
-    padding-left: 15px;
+    padding: 5px 8px;
     line-height: $column-header-height;
     height: $column-header-height;
     font-size: 16px;
@@ -22,6 +22,42 @@ $column-height: calc(#{$board-content-height} - #{$gap * 2});
     border-top-left-radius: $column-border-radius;
     border-top-right-radius: $column-border-radius;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .column-title {
+      flex: 90%;
+    }
+    .column-dropdown {
+      flex: 10%;
+      button.dropdown-btn {
+        padding: 0 $gap;
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        background-color: $column-bg-color;
+        border: none;
+        &::after {
+          color: $text-color;
+          content: "...";
+          border: none;
+          padding-bottom: 6px;
+        }
+        &:hover {
+          background-color: darken($column-bg-color, 10);
+        }
+      }
+      .dropdown-menu {
+        padding: 0;
+        min-width: 200px;
+        .dropdown-item {
+          padding: 1rem 1.5rem 1rem 1rem;
+          &:not(:last-child) {
+            border-bottom: 1px solid darken($column-bg-color, 10);
+          }
+        }
+      }
+    }
   }
   footer {
     padding-left: $gap;
