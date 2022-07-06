@@ -50,6 +50,9 @@
     background-color: $column-bg-color;
     .input-enter-new-column {
       margin: 5px 0;
+      &:focus {
+        border-color: $input-border-color;
+      }
     }
     .actions-add-new-column {
       display: flex;
@@ -59,7 +62,7 @@
         cursor: pointer;
         i {
           font-size: 24px;
-          color: #42526E;
+          color: #42526e;
           &:hover {
             color: darken($alert-danger, 10);
           }

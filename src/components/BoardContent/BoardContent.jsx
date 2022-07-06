@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useRef } from "react";
+import { useCallback } from "react";
 import { isEmpty } from "lodash";
 import { Container, Draggable } from "react-smooth-dnd";
 import {
@@ -14,11 +16,9 @@ import Column from "../Column/Column";
 import { mapOrder } from "../../utilities/sorts";
 import { applyDrag } from "../../utilities/dragDrop";
 
-import "./BoardContent.scss";
-
 import { initialData } from "../../actions/initialData";
-import { useRef } from "react";
-import { useCallback } from "react";
+
+import "./BoardContent.scss";
 
 export default function BoardContent() {
   const [board, setBoard] = useState({});
@@ -96,6 +96,25 @@ export default function BoardContent() {
     toggleOpenColumnForm();
   };
 
+  const onUpdateColumn = (newColumnToUpdate) => {
+    const columnIdtopUpdate = newColumnToUpdate.id;
+
+    let newColumns = [...columns];
+    const columnIndextopUpdate = newColumns.findIndex(
+      (i) => i.id === columnIdtopUpdate
+    );
+    if (newColumnToUpdate._destroy) {
+      newColumns.splice(columnIndextopUpdate, 1);
+    } else {
+      newColumns.splice(columnIndextopUpdate, 1, newColumnToUpdate);
+    }
+    let newBoard = { ...board };
+    newBoard.columnOrder = newColumns.map((c) => c.id);
+    newBoard.columns = newColumns;
+    setBoard(newBoard);
+    setColumns(newColumns);
+  };
+
   return (
     <div className="board-content">
       <Container
@@ -111,7 +130,11 @@ export default function BoardContent() {
       >
         {columns.map((column, index) => (
           <Draggable key={index}>
-            <Column column={column} onCardDrop={onCardDrop} />
+            <Column
+              column={column}
+              onCardDrop={onCardDrop}
+              onUpdateColumn={onUpdateColumn}
+            />
           </Draggable>
         ))}
       </Container>
