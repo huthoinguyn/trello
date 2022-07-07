@@ -27,6 +27,7 @@
   [type="tel"].form-control:focus,
   [contenteditable].form-control:focus {
     box-shadow: none;
+    border: 1px solid $input-border-color;
   }
   .btn:focus,
   .btn:active {
@@ -42,7 +43,21 @@
     cursor: pointer;
     &:focus {
       background-color: #fff;
-      border: 1px solid $input-border-color;
+    }
+  }
+  .actions-add-new-item {
+    display: flex;
+    align-items: center;
+    .cancel-icon {
+      margin-left: $gap;
+      cursor: pointer;
+      i {
+        font-size: 24px;
+        color: #42526e;
+        &:hover {
+          color: darken($alert-danger, 10);
+        }
+      }
     }
   }
 }
