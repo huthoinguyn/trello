@@ -23,13 +23,12 @@ import "./BoardContent.scss";
 export default function BoardContent() {
   const [board, setBoard] = useState({});
   const [columns, setColumns] = useState([]);
-  const [openColumnForm, setOpenColumnForm] = useState(false);
   const [newColumnTitle, setNewColumnTitle] = useState("");
+  const [openColumnForm, setOpenColumnForm] = useState(false);
 
-  const newColumnTitleChange = useCallback(
-    (e) => setNewColumnTitle(e.target.value),
-    []
-  );
+  const toggleOpenColumnForm = () => setOpenColumnForm(!openColumnForm);
+
+  const newColumnTitleChange = (e) => setNewColumnTitle(e.target.value);
 
   const newColumnInputRef = useRef(null);
   useEffect(() => {
@@ -73,15 +72,13 @@ export default function BoardContent() {
     }
   };
 
-  const toggleOpenColumnForm = () => setOpenColumnForm(!openColumnForm);
-
   const addNewColumn = () => {
     if (!newColumnTitle) return newColumnInputRef.current.focus();
 
     const newColumnToAdd = {
       id: Math.random().toString(36).substr(2, 5),
       boardId: board.id,
-      title: newColumnTitle,
+      title: newColumnTitle.trim(),
       cardOrder: [],
       cards: [],
     };
@@ -143,7 +140,7 @@ export default function BoardContent() {
           <Row>
             <Col className="add-new-column" onClick={toggleOpenColumnForm}>
               <i className="fa fa-plus icon"></i>
-              Add another column
+              Add another list
             </Col>
           </Row>
         )}
@@ -155,20 +152,17 @@ export default function BoardContent() {
                 className="input-enter-new-column"
                 size="sm"
                 type="text"
-                placeholder="Enter column title"
+                placeholder="Enter a list title..."
                 ref={newColumnInputRef}
                 value={newColumnTitle}
                 onChange={newColumnTitleChange}
                 onKeyDown={(event) => event.key === "Enter" && addNewColumn()}
               />
-              <div className="actions-add-new-column">
+              <div className="actions-add-new-item">
                 <Button variant="success" size="sm" onClick={addNewColumn}>
-                  Add column
+                  Add list
                 </Button>{" "}
-                <span
-                  className="cancel-new-column"
-                  onClick={toggleOpenColumnForm}
-                >
+                <span className="cancel-icon" onClick={toggleOpenColumnForm}>
                   <i className="fa fa-times icon"></i>
                 </span>
               </div>
