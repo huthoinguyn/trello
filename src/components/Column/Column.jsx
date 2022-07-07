@@ -103,7 +103,9 @@ export default function Column(props) {
               size="sm"
             />
             <Dropdown.Menu>
-              <Dropdown.Item>Add cart...</Dropdown.Item>
+              <Dropdown.Item onClick={toggleOpenCardForm}>
+                Add cart...
+              </Dropdown.Item>
               <Dropdown.Item onClick={toggleConfirmModal}>
                 Remove column...
               </Dropdown.Item>
